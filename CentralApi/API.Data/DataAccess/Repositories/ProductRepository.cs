@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 
 namespace API.Data.DataAccess.Repositories
 {
-    public class ProductRepository<TEntity> : IDisposable, IProductRepository<TEntity> where TEntity : class
+    public class ProductRepository : IProductRepository
     {
         //private readonly ProductEntities _dbContext;
         //private bool _disposed;
@@ -73,12 +73,12 @@ namespace API.Data.DataAccess.Repositories
 
         //    _disposed = true;
         //}
-        public void Create(TEntity entity)
+        public void Create(Product entity)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(TEntity entity)
+        public void Delete(Product entity)
         {
             throw new NotImplementedException();
         }
@@ -88,22 +88,22 @@ namespace API.Data.DataAccess.Repositories
             throw new NotImplementedException();
         }
 
-        public IQueryable<TEntity> GetAll()
+        public IQueryable<Product> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public IQueryable<TEntity> GetAll(Expression<Func<TEntity, bool>> filter)
+        public IQueryable<Product> GetAll(Expression<Func<Product, bool>> filter)
         {
             throw new NotImplementedException();
         }
 
-        public TEntity GetById(int id)
+        public Product GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(TEntity entity)
+        public void Update(Product entity)
         {
             throw new NotImplementedException();
         }

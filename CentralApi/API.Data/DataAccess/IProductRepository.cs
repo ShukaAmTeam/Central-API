@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Linq;
-using System.Linq.Expressions;
+using API.Data.DataAccess.Repositories.EF;
 
 namespace API.Data.DataAccess
 {
-    public interface IProductRepository<TEntity> where TEntity : class
+    public interface IProductRepository:IDisposable, IRepository<Product>
     {
-        IQueryable<TEntity> GetAll();
-        IQueryable<TEntity> GetAll(Expression<Func<TEntity, bool>> filter);
-        TEntity GetById(int id);
-        void Create(TEntity entity);
-        void Update(TEntity entity);
-        void Delete(TEntity entity);
+         
     }
 }
