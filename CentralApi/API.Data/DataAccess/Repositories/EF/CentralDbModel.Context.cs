@@ -25,12 +25,12 @@ namespace API.Data.DataAccess.Repositories.EF
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<MeasUnit> MeasUnits { get; set; }
-        public virtual DbSet<OrderItem> OrderItems { get; set; }
-        public virtual DbSet<Order> Orders { get; set; }
-        public virtual DbSet<OrderState> OrderStates { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<ProductType> ProductTypes { get; set; }
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<MeasUnits> MeasUnits { get; set; }
+        public virtual DbSet<OrderItems> OrderItems { get; set; }
+        public virtual DbSet<Orders> Orders { get; set; }
+        public virtual DbSet<OrderStates> OrderStates { get; set; }
+        public virtual DbSet<Products> Products { get; set; }
+        public virtual DbSet<ProductTypes> ProductTypes { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
     }
 }

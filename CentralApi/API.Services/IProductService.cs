@@ -1,8 +1,13 @@
-﻿namespace API.Services
+﻿using API.Entities;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using API.Entities.Filter;
+
+namespace API.Services
 {
     public interface IProductService
     {
-         Task<MetaDataListEntity<ProductEntity>> GetProducts(ListOptionsEntity listOptions);
-
+        Task<List<ProductEntity>> GetProducts(Options listOptions);
+        List<ProductEntity> GetProducts();
     }
 }

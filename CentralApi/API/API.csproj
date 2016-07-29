@@ -318,6 +318,16 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\API.Entities\API.Entities.csproj">
+      <Project>{A9B02753-B92F-439E-BDB7-84E2DA5833FC}</Project>
+      <Name>API.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\API.Services\API.Services.csproj">
+      <Project>{A24AA4B9-44FF-4FF0-8B6E-1CCFDF4356A8}</Project>
+      <Name>API.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

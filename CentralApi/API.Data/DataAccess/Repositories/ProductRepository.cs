@@ -5,7 +5,7 @@ using API.Data.DataAccess.Repositories.EF;
 
 namespace API.Data.DataAccess.Repositories
 {
-    public class ProductRepository : Repository<Product>, IProductRepository
+    public class ProductRepository : Repository<Products>, IProductRepository
     {
         /// <exception cref="ArgumentNullException"><paramref name="context" /> is <see langword="null" />.</exception>
         public ProductRepository(CentralDbEntities context)
@@ -15,14 +15,14 @@ namespace API.Data.DataAccess.Repositories
 
         public CentralDbEntities CentralDbContext => DbContext as CentralDbEntities;
 
-        public IEnumerable<Product> GetProducts(int pageIndex, int pageSize)
+        public IEnumerable<Products> GetProducts(int pageIndex, int pageSize)
         {
             return CentralDbContext
                 .Products.Skip((pageIndex - 1)*pageSize)
                 .Take(pageSize);
         }
 
-        public IEnumerable<Product> GetTopProducts(int count)
+        public IEnumerable<Products> GetTopProducts(int count)
         {
             return CentralDbContext.Products
                 .Take(count);
