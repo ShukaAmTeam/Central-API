@@ -67,7 +67,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="DataAccess\ICentralDbRepository.cs" />
+    <Compile Include="DataAccess\IProductRepository.cs" />
+    <Compile Include="DataAccess\IRepository.cs" />
     <Compile Include="DataAccess\Repositories\EF\CentralDbModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -104,7 +105,8 @@
     <Compile Include="DataAccess\Repositories\EF\Users.cs">
       <DependentUpon>CentralDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataAccess\Repositories\CentralDbRepository.cs" />
+    <Compile Include="DataAccess\Repositories\ProductRepository.cs" />
+    <Compile Include="DataAccess\Repositories\Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
