@@ -7,17 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace API.Data.DataAccess.Repositories.EF
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class OrderStates
+    [Table("OrderStates")]
+    public partial class OrderState
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public OrderStates()
+        public OrderState()
         {
-            this.Orders = new HashSet<Orders>();
+            this.Orders = new HashSet<Order>();
         }
     
         public int Id { get; set; }
@@ -25,6 +28,6 @@ namespace API.Data.DataAccess.Repositories.EF
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Orders> Orders { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

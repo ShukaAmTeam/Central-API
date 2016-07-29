@@ -7,12 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace API.Data.DataAccess.Repositories.EF
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class OrderItems
+
+    [Table("OrderItems")]
+    public partial class OrderItem
     {
         public int Id { get; set; }
         public int Product_Id { get; set; }
@@ -20,7 +23,7 @@ namespace API.Data.DataAccess.Repositories.EF
         public double Count { get; set; }
         public int Price { get; set; }
     
-        public virtual Orders Orders { get; set; }
-        public virtual Products Products { get; set; }
+        public virtual Order Orders { get; set; }
+        public virtual Product Products { get; set; }
     }
 }
