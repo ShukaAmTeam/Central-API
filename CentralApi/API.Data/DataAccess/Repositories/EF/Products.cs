@@ -7,17 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace API.Data.DataAccess.Repositories.EF
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Products
+
+    [Table("Products")]
+    public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Products()
+        public Product()
         {
-            this.OrderItems = new HashSet<OrderItems>();
+            this.OrderItems = new HashSet<OrderItem>();
         }
     
         public int Id { get; set; }
@@ -31,9 +34,9 @@ namespace API.Data.DataAccess.Repositories.EF
         public Nullable<int> AvailableCount { get; set; }
         public Nullable<bool> IsAvailable { get; set; }
     
-        public virtual MeasUnits MeasUnits { get; set; }
+        public virtual MeasUnit MeasUnits { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderItems> OrderItems { get; set; }
-        public virtual ProductTypes ProductTypes { get; set; }
+        public virtual ICollection<OrderItem> OrderItems { get; set; }
+        public virtual ProductType ProductTypes { get; set; }
     }
 }
