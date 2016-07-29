@@ -12,3 +12,17 @@ C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API.Data\bin\De
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API.Data\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API.Data\obj\Debug\API.Data.dll
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API.Data\obj\Debug\API.Data.pdb
+D:\Work\Central-API\CentralApi\API.Data\bin\Debug\CentralDb.mdf
+D:\Work\Central-API\CentralApi\API.Data\bin\Debug\CentralDb_log.ldf
+D:\Work\Central-API\CentralApi\API.Data\bin\Debug\DB\CentralDb.mdf
+D:\Work\Central-API\CentralApi\API.Data\bin\Debug\DB\CentralDb_log.ldf
+D:\Work\Central-API\CentralApi\API.Data\bin\Debug\API.Data.dll.config
+D:\Work\Central-API\CentralApi\API.Data\bin\Debug\API.Data.dll
+D:\Work\Central-API\CentralApi\API.Data\bin\Debug\API.Data.pdb
+D:\Work\Central-API\CentralApi\API.Data\bin\Debug\EntityFramework.dll
+D:\Work\Central-API\CentralApi\API.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\Work\Central-API\CentralApi\API.Data\bin\Debug\EntityFramework.xml
+D:\Work\Central-API\CentralApi\API.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\Work\Central-API\CentralApi\API.Data\obj\Debug\API.Data.csprojResolveAssemblyReference.cache
+D:\Work\Central-API\CentralApi\API.Data\obj\Debug\API.Data.dll
+D:\Work\Central-API\CentralApi\API.Data\obj\Debug\API.Data.pdb

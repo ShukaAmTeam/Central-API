@@ -2,3 +2,6 @@ C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API.Services\bi
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API.Services\bin\Debug\API.Services.pdb
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API.Services\obj\Debug\API.Services.dll
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API.Services\obj\Debug\API.Services.pdb
+D:\Work\Central-API\CentralApi\API.Services\obj\Debug\API.Services.csprojResolveAssemblyReference.cache
+D:\Work\Central-API\CentralApi\API.Services\obj\Debug\API.Services.dll
+D:\Work\Central-API\CentralApi\API.Services\obj\Debug\API.Services.pdb

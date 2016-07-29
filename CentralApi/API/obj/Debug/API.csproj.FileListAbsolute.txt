@@ -88,3 +88,6 @@ C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\System.
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\obj\Debug\API.csprojResolveAssemblyReference.cache
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\obj\Debug\API.dll
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\obj\Debug\API.pdb
+D:\Work\Central-API\CentralApi\API\obj\Debug\API.csprojResolveAssemblyReference.cache
+D:\Work\Central-API\CentralApi\API\obj\Debug\API.dll
+D:\Work\Central-API\CentralApi\API\obj\Debug\API.pdb

@@ -63,3 +63,6 @@ C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API.Tests\bin\D
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API.Tests\obj\Debug\API.Tests.csprojResolveAssemblyReference.cache
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API.Tests\obj\Debug\API.Tests.dll
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API.Tests\obj\Debug\API.Tests.pdb
+D:\Work\Central-API\CentralApi\API.Tests\obj\Debug\API.Tests.csprojResolveAssemblyReference.cache
+D:\Work\Central-API\CentralApi\API.Tests\obj\Debug\API.Tests.dll
+D:\Work\Central-API\CentralApi\API.Tests\obj\Debug\API.Tests.pdb

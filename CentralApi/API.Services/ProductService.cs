@@ -5,7 +5,7 @@ namespace API.Services
 {
     public class ProductService
     {
-        // Task<MetaDataListEntity<ProductEntity>> GetProducts(ListOptionsEntity listOptions);
+         Task<MetaDataListEntity<ProductEntity>> GetProducts(ListOptionsEntity listOptions);
 
         Task<List<object>> GetProducts();
 
