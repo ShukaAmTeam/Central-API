@@ -14,13 +14,13 @@ namespace API.Data.DataAccess.Repositories.EF
     using System;
     using System.Collections.Generic;
     
-    [Table("OrderStates")]
-    public partial class OrderState
+    //[Table("OrderStates")]
+    public partial class OrderStates
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public OrderState()
+        public OrderStates()
         {
-            this.Orders = new HashSet<Order>();
+            this.Orders = new HashSet<Orders>();
         }
     
         public int Id { get; set; }
@@ -28,6 +28,6 @@ namespace API.Data.DataAccess.Repositories.EF
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Orders> Orders { get; set; }
     }
 }

@@ -14,13 +14,13 @@ namespace API.Data.DataAccess.Repositories.EF
     using System;
     using System.Collections.Generic;
     
-    [Table("ProductTypes")]
-    public partial class ProductType
+   // [Table("ProductTypes")]
+    public partial class ProductTypes
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ProductType()
+        public ProductTypes()
         {
-            this.Products = new HashSet<Product>();
+            this.Products = new HashSet<Products>();
         }
     
         public int Id { get; set; }
@@ -28,6 +28,6 @@ namespace API.Data.DataAccess.Repositories.EF
         public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<Products> Products { get; set; }
     }
 }

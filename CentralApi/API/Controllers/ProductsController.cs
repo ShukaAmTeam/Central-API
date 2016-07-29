@@ -1,8 +1,7 @@
-﻿using System;
+﻿using API.Entities.Filter;
+using API.Services;
+using API.Services.Services;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -12,11 +11,15 @@ namespace API.Controllers
     [RoutePrefix("api/products")]
     public class ProductsController : ApiController
     {
-        private readonly IProductsService _productsService;
+        private readonly IProductService _productsService;
 
-        public ProductsController(IProductsService productsService)
+        public ProductsController()
         {
-            _productsService = productsService;
+            _productsService = new ProductService();// productsService;
+        }
+        public ProductsController(IProductService productsService)
+        {
+            _productsService =new ProductService();// productsService;
         }
 
 
@@ -24,31 +27,33 @@ namespace API.Controllers
         [Route("")]
         public async Task<IHttpActionResult> GetProducts(int? limit = null, int? offset = null)
         {
-            var productsEntity = await _productsService.GetProducts(new ListOptionsEntity(limit, offset));
+            var productsEntity2 =  _productsService.GetProducts();
+            var productsEntity = await _productsService.GetProducts(new Options(limit, offset)).ConfigureAwait(false);
 
-            var productsModel = new ProductsModel
-            {
-                Products = new List<Products>(),
-                Metadata = new MetaData
-                {
-                    TotalCount = agentSlotsEntity.TotalCount,
-                    Limit = agentSlotsEntity.Limit,
-                    Offset = agentSlotsEntity.Offset
-                }
-            };
+            //var productsModel = new ProductsModel
+            //{
+            //    Products = new List<Products>(),
+            //    Metadata = new MetaData
+            //    {
+            //        TotalCount = agentSlotsEntity.TotalCount,
+            //        Limit = agentSlotsEntity.Limit,
+            //        Offset = agentSlotsEntity.Offset
+            //    }
+            //};
 
-            foreach (var agentSlot in from agentSlotEntity in productsEntity.DataList select AgentSlot.MapFromEntity(agentSlotEntity))
-            {
-                //remove agent from application child records
-                foreach (var application in agentSlot.Applications)
-                {
-                    application.AgentSlot = null;
-                }
+            //foreach (var agentSlot in from agentSlotEntity in productsEntity.DataList select AgentSlot.MapFromEntity(agentSlotEntity))
+            //{
+            //    //remove agent from application child records
+            //    foreach (var application in agentSlot.Applications)
+            //    {
+            //        application.AgentSlot = null;
+            //    }
 
-                productsModel.Products.Add(agentSlot);
-            }
+            //    productsModel.Products.Add(agentSlot);
+            //}
 
-            return Ok(productsModel);
+            //return Ok(productsModel);
+            return Ok(productsEntity);
         }
 
 

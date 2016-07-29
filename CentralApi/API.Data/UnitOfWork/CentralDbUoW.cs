@@ -1,27 +1,38 @@
 ﻿using System;
+using System.Linq;
+using API.Data.DataAccess;
+using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
-using API.Data.DataAccess;
 using API.Data.DataAccess.Repositories;
 using API.Data.DataAccess.Repositories.EF;
 
 namespace API.Data.UnitOfWork
 {
-    public class CentralDbUoW : ICentralDbUoW
+    public class CentralDbUoW<TContext> : ICentralDbUoW, IDisposable where TContext : CentralDb, new()
     {
-        private readonly CentralDbEntities _context;
-
-        /// <exception cref="ArgumentNullException"><paramref name="context" /> is <see langword="null" />.</exception>
-        public CentralDbUoW(CentralDbEntities context)
+        private readonly CentralDb _context;
+        private readonly Dictionary<Type, object> _repositories;
+        
+        public CentralDbUoW() : this(new TContext()) { }
+      
+        public CentralDbUoW(CentralDb context)
         {
             _context = context;
-            Order = new OrderRepository(_context);
-            Product = new ProductRepository(_context);
+            _repositories = new Dictionary<Type, object>();
         }
 
-        public IOrderRepository Order { get; private set; }
 
-        public IProductRepository Product { get; private set; }
+        public IRepository<TEntity> GetRepository<TEntity>() where TEntity : class, ICentralEntity
+        {
+            if (_repositories.Keys.Contains(typeof(TEntity)))
+                return _repositories[typeof(TEntity)] as IRepository<TEntity>;
+
+            var repository = new Repository<TEntity>(_context);
+            _repositories.Add(typeof(TEntity), repository);
+
+            return repository;
+        }
 
         /// <exception cref="DbEntityValidationException">
         ///             The save was aborted because validation of entity property values failed.
@@ -39,6 +50,7 @@ namespace API.Data.UnitOfWork
         ///             Some error occurred attempting to process entities in the context either before or after sending commands
         ///             to the database.
         ///             </exception>
+        /// <exception cref="DbUpdateException">An error occurred sending updates to the database.</exception>
         public int Complete()
         {
             return _context.SaveChanges();
@@ -46,7 +58,13 @@ namespace API.Data.UnitOfWork
 
         public void Dispose()
         {
+            foreach (var disposableRepository in _repositories.Select(repository => repository.Value as IDisposable))
+            {
+                disposableRepository?.Dispose();
+            }
             _context.Dispose();
+
+            GC.SuppressFinalize(this);  //  ToDo ?
         }
     }
 }
