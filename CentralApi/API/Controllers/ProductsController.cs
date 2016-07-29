@@ -21,8 +21,7 @@ namespace API.Controllers
         {
             _productsService =new ProductService();// productsService;
         }
-
-
+        
         [HttpGet]
         [Route("")]
         public async Task<IHttpActionResult> GetProducts(int? limit = null, int? offset = null)

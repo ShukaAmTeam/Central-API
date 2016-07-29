@@ -14,9 +14,8 @@ namespace API.Data.DataAccess.Repositories
         public Repository(DbContext dbContext)
         {
             if (dbContext == null) throw new ArgumentNullException(nameof(dbContext));
-            {
-                _dbContext = dbContext;
-            }
+
+            _dbContext = dbContext;
         }
 
         protected DbContext DbContext => _dbContext;
