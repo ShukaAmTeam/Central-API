@@ -103,6 +103,8 @@
     <Compile Include="DataAccess\Repositories\EF\Users.cs">
       <DependentUpon>CentralDbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataAccess\IProductRepository.cs" />
+    <Compile Include="DataAccess\Repositories\ProductRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
