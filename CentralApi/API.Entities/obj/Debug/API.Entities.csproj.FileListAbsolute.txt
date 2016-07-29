@@ -1,5 +1,4 @@
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API.Entities\bin\Debug\API.Entities.dll
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API.Entities\bin\Debug\API.Entities.pdb
-C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API.Entities\obj\Debug\API.Entities.csprojResolveAssemblyReference.cache
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API.Entities\obj\Debug\API.Entities.dll
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API.Entities\obj\Debug\API.Entities.pdb
