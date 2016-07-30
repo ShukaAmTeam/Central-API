@@ -249,6 +249,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\CentralDb.mdf" />
+    <Content Include="App_Data\CentralDb_Dev.mdf" />
+    <Content Include="App_Data\CentralDb_Dev_log.ldf">
+      <DependentUpon>CentralDb_Dev.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Data\CentralDb_log.ldf">
       <DependentUpon>CentralDb.mdf</DependentUpon>
     </Content>
