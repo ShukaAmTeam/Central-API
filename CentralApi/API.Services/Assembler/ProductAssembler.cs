@@ -7,6 +7,19 @@ namespace API.Services.Assembler
     {
         public override ProductEntity DomainEntityToDto(Products productDomainEntity)
         {
+            var productEntity = new ProductEntity
+            {
+                Name = productDomainEntity.Name,
+                AvailableCount = productDomainEntity.AvailableCount,
+                CostPrice = productDomainEntity.CostPrice,
+                Description = productDomainEntity.Description,
+                IsAvailable = productDomainEntity.IsAvailable,
+                //MeasUnits = productDomainEntity.MeasUnits,
+                Price = productDomainEntity.Price,
+                //ProductTypes = productDomainEntity.ProductTypes,
+                TotalCount = productDomainEntity.TotalCount
+            };
+
             return new ProductEntity();
         }
 

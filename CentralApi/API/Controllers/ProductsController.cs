@@ -1,6 +1,7 @@
 ﻿using API.Entities.Filter;
 using API.Services;
 using API.Services.Services;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -26,7 +27,14 @@ namespace API.Controllers
         [Route("")]
         public async Task<IHttpActionResult> GetProducts(int? limit = null, int? offset = null)
         {
-            var productsEntity2 =  _productsService.GetProducts();
+            try
+            {
+                var productsEntity2 = _productsService.GetProducts();
+            }
+            catch (Exception ex)
+            {
+                
+            }
             var productsEntity = await _productsService.GetProducts(new Options(limit, offset)).ConfigureAwait(false);
 
             //var productsModel = new ProductsModel

@@ -88,9 +88,6 @@
       <DependentUpon>CentralDbModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="DataAccess\Repositories\EF\CentralDbPartial.cs" />
-    <Compile Include="DataAccess\Repositories\EF\MeasUnits.cs">
-      <DependentUpon>CentralDbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataAccess\Repositories\EF\OrderItems.cs">
       <DependentUpon>CentralDbModel.tt</DependentUpon>
     </Compile>
@@ -106,6 +103,9 @@
     <Compile Include="DataAccess\Repositories\EF\ProductTypes.cs">
       <DependentUpon>CentralDbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataAccess\Repositories\EF\UnitMeasure.cs">
+      <DependentUpon>CentralDbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataAccess\Repositories\EF\Users.cs">
       <DependentUpon>CentralDbModel.tt</DependentUpon>
     </Compile>
@@ -118,13 +118,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="CentralDb.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="CentralDb_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>CentralDb.mdf</DependentUpon>
-    </Content>
     <Content Include="DataAccess\Repositories\EF\CentralDbModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CentralDbModel.edmx</DependentUpon>
@@ -134,13 +127,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CentralDbModel.edmx</DependentUpon>
       <LastGenOutput>CentralDbModel.cs</LastGenOutput>
-    </Content>
-    <Content Include="DB\CentralDb.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DB\CentralDb_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>CentralDb.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>

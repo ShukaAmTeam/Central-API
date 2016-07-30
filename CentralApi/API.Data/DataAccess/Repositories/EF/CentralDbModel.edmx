@@ -4,16 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CentralDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="MeasUnits">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MeasUnit_Guid" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="ShortName" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" />
-        </EntityType>
+    <Schema Namespace="CentralDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="OrderItems">
           <Key>
             <PropertyRef Name="Id" />
@@ -68,6 +59,15 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="UnitMeasure">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MeasUnit_Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ShortName" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -129,10 +129,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Products__MeasUn__2A4B4B5E">
-          <End Role="MeasUnits" Type="Self.MeasUnits" Multiplicity="1" />
+          <End Role="UnitMeasure" Type="Self.UnitMeasure" Multiplicity="1" />
           <End Role="Products" Type="Self.Products" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="MeasUnits">
+            <Principal Role="UnitMeasure">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Products">
@@ -153,12 +153,12 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="CentralDbModelStoreContainer">
-          <EntitySet Name="MeasUnits" EntityType="Self.MeasUnits" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderItems" EntityType="Self.OrderItems" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderStates" EntityType="Self.OrderStates" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductTypes" EntityType="Self.ProductTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UnitMeasure" EntityType="Self.UnitMeasure" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__OrderItem__Order__25869641" Association="Self.FK__OrderItem__Order__25869641">
             <End Role="Orders" EntitySet="Orders" />
@@ -177,7 +177,7 @@
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="FK__Products__MeasUn__2A4B4B5E" Association="Self.FK__Products__MeasUn__2A4B4B5E">
-            <End Role="MeasUnits" EntitySet="MeasUnits" />
+            <End Role="UnitMeasure" EntitySet="UnitMeasure" />
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
           <AssociationSet Name="FK__Products__Type_I__2B3F6F97" Association="Self.FK__Products__Type_I__2B3F6F97">
@@ -185,21 +185,10 @@
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CentralDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="MeasUnits">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MeasUnit_Guid" Type="Guid" Nullable="false" />
-          <Property Name="ShortName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Products" Relationship="Self.FK__Products__MeasUn__2A4B4B5E" FromRole="MeasUnits" ToRole="Products" />
-        </EntityType>
         <EntityType Name="OrderItems">
           <Key>
             <PropertyRef Name="Id" />
@@ -252,9 +241,9 @@
           <Property Name="TotalCount" Type="Int32" />
           <Property Name="AvailableCount" Type="Int32" />
           <Property Name="IsAvailable" Type="Boolean" />
-          <NavigationProperty Name="MeasUnits" Relationship="Self.FK__Products__MeasUn__2A4B4B5E" FromRole="Products" ToRole="MeasUnits" />
           <NavigationProperty Name="OrderItems" Relationship="Self.FK__OrderItem__Produ__2C3393D0" FromRole="Products" ToRole="OrderItems" />
           <NavigationProperty Name="ProductTypes" Relationship="Self.FK__Products__Type_I__2B3F6F97" FromRole="Products" ToRole="ProductTypes" />
+          <NavigationProperty Name="UnitMeasure" Relationship="CentralDbModel.FK__Products__MeasUn__2A4B4B5E1" FromRole="Products" ToRole="UnitMeasure" />
         </EntityType>
         <EntityType Name="ProductTypes">
           <Key>
@@ -277,18 +266,6 @@
           <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__User_Id__2F10007B" FromRole="Users" ToRole="Orders" />
         </EntityType>
-        <Association Name="FK__Products__MeasUn__2A4B4B5E">
-          <End Role="MeasUnits" Type="Self.MeasUnits" Multiplicity="1" />
-          <End Role="Products" Type="Self.Products" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MeasUnits">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Products">
-              <PropertyRef Name="MeasUnit_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__OrderItem__Order__25869641">
           <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
           <End Role="OrderItems" Type="Self.OrderItems" Multiplicity="*" />
@@ -350,17 +327,12 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="CentralDbEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="MeasUnits" EntityType="Self.MeasUnits" />
           <EntitySet Name="OrderItems" EntityType="Self.OrderItems" />
           <EntitySet Name="Orders" EntityType="Self.Orders" />
           <EntitySet Name="OrderStates" EntityType="Self.OrderStates" />
           <EntitySet Name="Products" EntityType="Self.Products" />
           <EntitySet Name="ProductTypes" EntityType="Self.ProductTypes" />
           <EntitySet Name="Users" EntityType="Self.Users" />
-          <AssociationSet Name="FK__Products__MeasUn__2A4B4B5E" Association="Self.FK__Products__MeasUn__2A4B4B5E">
-            <End Role="MeasUnits" EntitySet="MeasUnits" />
-            <End Role="Products" EntitySet="Products" />
-          </AssociationSet>
           <AssociationSet Name="FK__OrderItem__Order__25869641" Association="Self.FK__OrderItem__Order__25869641">
             <End Role="Orders" EntitySet="Orders" />
             <End Role="OrderItems" EntitySet="OrderItems" />
@@ -381,23 +353,40 @@
             <End Role="ProductTypes" EntitySet="ProductTypes" />
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
+          <EntitySet Name="UnitMeasure" EntityType="CentralDbModel.UnitMeasure" />
+          <AssociationSet Name="FK__Products__MeasUn__2A4B4B5E1" Association="CentralDbModel.FK__Products__MeasUn__2A4B4B5E1">
+            <End Role="UnitMeasure" EntitySet="UnitMeasure" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="UnitMeasure">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MeasUnit_Guid" Type="Guid" Nullable="false" />
+          <Property Name="ShortName" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Products" Relationship="CentralDbModel.FK__Products__MeasUn__2A4B4B5E1" FromRole="UnitMeasure" ToRole="Products" />
+        </EntityType>
+        <Association Name="FK__Products__MeasUn__2A4B4B5E1">
+          <End Type="CentralDbModel.UnitMeasure" Role="UnitMeasure" Multiplicity="1" />
+          <End Type="CentralDbModel.Products" Role="Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitMeasure">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="MeasUnit_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="CentralDbModelStoreContainer" CdmEntityContainer="CentralDbEntities">
-          <EntitySetMapping Name="MeasUnits">
-            <EntityTypeMapping TypeName="CentralDbModel.MeasUnits">
-              <MappingFragment StoreEntitySet="MeasUnits">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="MeasUnit_Guid" ColumnName="MeasUnit_Guid" />
-                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="OrderItems">
             <EntityTypeMapping TypeName="CentralDbModel.OrderItems">
               <MappingFragment StoreEntitySet="OrderItems">
@@ -467,6 +456,16 @@
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnitMeasure">
+            <EntityTypeMapping TypeName="CentralDbModel.UnitMeasure">
+              <MappingFragment StoreEntitySet="UnitMeasure">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="MeasUnit_Guid" ColumnName="MeasUnit_Guid" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -7,18 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.ComponentModel.DataAnnotations.Schema;
-
 namespace API.Data.DataAccess.Repositories.EF
 {
     using System;
     using System.Collections.Generic;
-
-   // [Table("MeasUnits")]
-    public partial class MeasUnits
+    
+    public partial class UnitMeasure
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public MeasUnits()
+        public UnitMeasure()
         {
             this.Products = new HashSet<Products>();
         }
