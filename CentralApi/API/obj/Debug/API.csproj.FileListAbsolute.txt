@@ -15,6 +15,8 @@ C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\API.dll
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\API.dll
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\API.pdb
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\Antlr3.Runtime.dll
+C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\API.Entities.dll
+C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\API.Services.dll
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\EntityFramework.dll
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\EntityFramework.SqlServer.dll
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\Microsoft.AI.Agent.Intercept.dll
@@ -52,6 +54,9 @@ C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\System.
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\System.Web.WebPages.dll
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\System.Web.WebPages.Razor.dll
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\WebGrease.dll
+C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\API.Data.dll
+C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\API.Entities.pdb
+C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\API.Services.pdb
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\Microsoft.AI.DependencyCollector.xml
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\Microsoft.AI.Web.xml
@@ -85,16 +90,7 @@ C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\Microso
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\System.Web.Http.Owin.xml
+C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\API.Data.pdb
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\obj\Debug\API.csprojResolveAssemblyReference.cache
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\obj\Debug\API.dll
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\obj\Debug\API.pdb
-C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\API.Services.dll
-C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\API.Entities.dll
-C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\API.Data.dll
-C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\API.Services.pdb
-C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\API.Entities.pdb
-C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\API.Data.pdb
-C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\CentralDb.mdf
-C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\CentralDb_log.ldf
-C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\DB\CentralDb.mdf
-C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API\bin\DB\CentralDb_log.ldf

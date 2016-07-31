@@ -1,7 +1,3 @@
-C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API.Data\bin\Debug\CentralDb.mdf
-C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API.Data\bin\Debug\CentralDb_log.ldf
-C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API.Data\bin\Debug\DB\CentralDb.mdf
-C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API.Data\bin\Debug\DB\CentralDb_log.ldf
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API.Data\bin\Debug\API.Data.dll.config
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API.Data\bin\Debug\API.Data.dll
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API.Data\bin\Debug\API.Data.pdb
@@ -11,4 +7,3 @@ C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API.Data\bin\De
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API.Data\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API.Data\obj\Debug\API.Data.dll
 C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API.Data\obj\Debug\API.Data.pdb
-C:\Users\grigor\Source\Workspaces\ShukaAm\Central-API\CentralApi\API.Data\obj\Debug\API.Data.csprojResolveAssemblyReference.cache

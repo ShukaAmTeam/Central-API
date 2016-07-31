@@ -10,17 +10,17 @@ namespace API.Services.Assembler
             var productEntity = new ProductEntity
             {
                 Name = productDomainEntity.Name,
-                AvailableCount = productDomainEntity.AvailableCount,
-                CostPrice = productDomainEntity.CostPrice,
+                //AvailableCount = productDomainEntity.AvailableCount,
+                //CostPrice = productDomainEntity.CostPrice,
                 Description = productDomainEntity.Description,
-                IsAvailable = productDomainEntity.IsAvailable,
+                //IsAvailable = productDomainEntity.IsAvailable,
                 //MeasUnits = productDomainEntity.MeasUnits,
-                Price = productDomainEntity.Price,
+                //Price = productDomainEntity.Price,
                 //ProductTypes = productDomainEntity.ProductTypes,
-                TotalCount = productDomainEntity.TotalCount
+                //TotalCount = productDomainEntity.TotalCount
             };
 
-            return new ProductEntity();
+            return productEntity;
         }
 
         public override Products DtoToDomainEntity(ProductEntity dto)

@@ -25,12 +25,17 @@ namespace API.Data.DataAccess.Repositories.EF
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<OrderItems> OrderItems { get; set; }
-        public virtual DbSet<Orders> Orders { get; set; }
-        public virtual DbSet<OrderStates> OrderStates { get; set; }
+        public virtual DbSet<Categories> Categories { get; set; }
+        public virtual DbSet<Currencies> Currencies { get; set; }
+        public virtual DbSet<Customers> Customers { get; set; }
         public virtual DbSet<Products> Products { get; set; }
-        public virtual DbSet<ProductTypes> ProductTypes { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
-        public virtual DbSet<UnitMeasure> UnitMeasure { get; set; }
+        public virtual DbSet<PurchaseOrderItems> PurchaseOrderItems { get; set; }
+        public virtual DbSet<PurchaseOrders> PurchaseOrders { get; set; }
+        public virtual DbSet<SaleOrderItems> SaleOrderItems { get; set; }
+        public virtual DbSet<SaleOrders> SaleOrders { get; set; }
+        public virtual DbSet<Suppliers> Suppliers { get; set; }
+        public virtual DbSet<UnitMeasures> UnitMeasures { get; set; }
+        public virtual DbSet<Cashes> Cashes { get; set; }
+        public virtual DbSet<ShoppingCartItems> ShoppingCartItems { get; set; }
     }
 }

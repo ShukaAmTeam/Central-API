@@ -17,23 +17,28 @@ namespace API.Data.DataAccess.Repositories.EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Products()
         {
-            this.OrderItems = new HashSet<OrderItems>();
+            this.PurchaseOrderItems = new HashSet<PurchaseOrderItems>();
+            this.SaleOrderItems = new HashSet<SaleOrderItems>();
+            this.ShoppingCartItems = new HashSet<ShoppingCartItems>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public int Type_Id { get; set; }
-        public Nullable<int> CostPrice { get; set; }
-        public Nullable<int> Price { get; set; }
-        public int MeasUnit_Id { get; set; }
-        public Nullable<int> TotalCount { get; set; }
-        public Nullable<int> AvailableCount { get; set; }
-        public Nullable<bool> IsAvailable { get; set; }
+        public int CategoryId { get; set; }
+        public string ImageUrl { get; set; }
+        public System.DateTime DateCreated { get; set; }
+        public System.DateTime DateModified { get; set; }
+        public string UnitMeasureCode { get; set; }
+        public Nullable<decimal> Weight { get; set; }
     
+        public virtual Categories Categories { get; set; }
+        public virtual UnitMeasures UnitMeasures { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderItems> OrderItems { get; set; }
-        public virtual ProductTypes ProductTypes { get; set; }
-        public virtual UnitMeasure UnitMeasure { get; set; }
+        public virtual ICollection<PurchaseOrderItems> PurchaseOrderItems { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SaleOrderItems> SaleOrderItems { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ShoppingCartItems> ShoppingCartItems { get; set; }
     }
 }

@@ -69,7 +69,13 @@
     <Compile Include="DataAccess\IOrderRepository.cs" />
     <Compile Include="DataAccess\IProductRepository.cs" />
     <Compile Include="DataAccess\IRepository.cs" />
-    <Compile Include="DataAccess\Repositories\EF\Central\CentralDb_Order.cs" />
+    <Compile Include="DataAccess\Repositories\EF\Cashes.cs">
+      <DependentUpon>CentralDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\Repositories\EF\Categories.cs">
+      <DependentUpon>CentralDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\Repositories\EF\Central\CentralDb_SaleOrders.cs" />
     <Compile Include="DataAccess\Repositories\EF\Central\ICentralEntity.cs" />
     <Compile Include="DataAccess\Repositories\EF\Central\CentralDb_Product.cs" />
     <Compile Include="DataAccess\Repositories\EF\CentralDbModel.Context.cs">
@@ -88,28 +94,37 @@
       <DependentUpon>CentralDbModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="DataAccess\Repositories\EF\CentralDbPartial.cs" />
-    <Compile Include="DataAccess\Repositories\EF\OrderItems.cs">
+    <Compile Include="DataAccess\Repositories\EF\Currencies.cs">
       <DependentUpon>CentralDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataAccess\Repositories\EF\Orders.cs">
-      <DependentUpon>CentralDbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataAccess\Repositories\EF\OrderStates.cs">
+    <Compile Include="DataAccess\Repositories\EF\Customers.cs">
       <DependentUpon>CentralDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataAccess\Repositories\EF\Products.cs">
       <DependentUpon>CentralDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataAccess\Repositories\EF\ProductTypes.cs">
+    <Compile Include="DataAccess\Repositories\EF\PurchaseOrderItems.cs">
       <DependentUpon>CentralDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataAccess\Repositories\EF\UnitMeasure.cs">
+    <Compile Include="DataAccess\Repositories\EF\PurchaseOrders.cs">
       <DependentUpon>CentralDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataAccess\Repositories\EF\Users.cs">
+    <Compile Include="DataAccess\Repositories\EF\SaleOrderItems.cs">
       <DependentUpon>CentralDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataAccess\Repositories\OrderRepository.cs" />
+    <Compile Include="DataAccess\Repositories\EF\SaleOrders.cs">
+      <DependentUpon>CentralDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\Repositories\EF\ShoppingCartItems.cs">
+      <DependentUpon>CentralDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\Repositories\EF\Suppliers.cs">
+      <DependentUpon>CentralDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\Repositories\EF\UnitMeasures.cs">
+      <DependentUpon>CentralDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\Repositories\SaleOrderRepository.cs" />
     <Compile Include="DataAccess\Repositories\ProductRepository.cs" />
     <Compile Include="DataAccess\Repositories\Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

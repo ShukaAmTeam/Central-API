@@ -1,85 +1,140 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="CentralDbModelStoreContainer" CdmEntityContainer="CentralDbEntities">
-    <EntitySetMapping Name="MeasUnits">
-      <EntityTypeMapping TypeName="CentralDbModel.MeasUnits">
-        <MappingFragment StoreEntitySet="MeasUnits">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="MeasUnit_Guid" ColumnName="MeasUnit_Guid" />
-          <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="CentralDbModel.Categories">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="OrderItems">
-      <EntityTypeMapping TypeName="CentralDbModel.OrderItems">
-        <MappingFragment StoreEntitySet="OrderItems">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
-          <ScalarProperty Name="Order_Id" ColumnName="Order_Id" />
-          <ScalarProperty Name="Count" ColumnName="Count" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Orders">
-      <EntityTypeMapping TypeName="CentralDbModel.Orders">
-        <MappingFragment StoreEntitySet="Orders">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
-          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
-          <ScalarProperty Name="DestinationAddress" ColumnName="DestinationAddress" />
-          <ScalarProperty Name="AdditionalPrice" ColumnName="AdditionalPrice" />
-          <ScalarProperty Name="PreferableDeliveryDate" ColumnName="PreferableDeliveryDate" />
-          <ScalarProperty Name="State_Id" ColumnName="State_Id" />
-          <ScalarProperty Name="FullPrice" ColumnName="FullPrice" />
-          <ScalarProperty Name="AdditionalInformation" ColumnName="AdditionalInformation" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="OrderStates">
-      <EntityTypeMapping TypeName="CentralDbModel.OrderStates">
-        <MappingFragment StoreEntitySet="OrderStates">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="State_Guid" ColumnName="State_Guid" />
+    <EntitySetMapping Name="Currencies">
+      <EntityTypeMapping TypeName="CentralDbModel.Currencies">
+        <MappingFragment StoreEntitySet="Currencies">
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="CentralDbModel.Customers">
+        <MappingFragment StoreEntitySet="Customers">
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Products">
       <EntityTypeMapping TypeName="CentralDbModel.Products">
         <MappingFragment StoreEntitySet="Products">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="UnitMeasureCode" ColumnName="UnitMeasureCode" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
           <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Type_Id" ColumnName="Type_Id" />
-          <ScalarProperty Name="CostPrice" ColumnName="CostPrice" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="MeasUnit_Id" ColumnName="MeasUnit_Id" />
-          <ScalarProperty Name="TotalCount" ColumnName="TotalCount" />
-          <ScalarProperty Name="AvailableCount" ColumnName="AvailableCount" />
-          <ScalarProperty Name="IsAvailable" ColumnName="IsAvailable" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ProductTypes">
-      <EntityTypeMapping TypeName="CentralDbModel.ProductTypes">
-        <MappingFragment StoreEntitySet="ProductTypes">
+    <EntitySetMapping Name="PurchaseOrderItems">
+      <EntityTypeMapping TypeName="CentralDbModel.PurchaseOrderItems">
+        <MappingFragment StoreEntitySet="PurchaseOrderItems">
+          <ScalarProperty Name="PurchaseOrderId" ColumnName="PurchaseOrderId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="CentralDbModel.Users">
-        <MappingFragment StoreEntitySet="Users">
+    <EntitySetMapping Name="PurchaseOrders">
+      <EntityTypeMapping TypeName="CentralDbModel.PurchaseOrders">
+        <MappingFragment StoreEntitySet="PurchaseOrders">
+          <ScalarProperty Name="AdditionalInformation" ColumnName="AdditionalInformation" />
+          <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SaleOrderItems">
+      <EntityTypeMapping TypeName="CentralDbModel.SaleOrderItems">
+        <MappingFragment StoreEntitySet="SaleOrderItems">
+          <ScalarProperty Name="AdditionalInformation" ColumnName="AdditionalInformation" />
+          <ScalarProperty Name="SaleOrderId" ColumnName="SaleOrderId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SaleOrders">
+      <EntityTypeMapping TypeName="CentralDbModel.SaleOrders">
+        <MappingFragment StoreEntitySet="SaleOrders">
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
           <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Suppliers">
+      <EntityTypeMapping TypeName="CentralDbModel.Suppliers">
+        <MappingFragment StoreEntitySet="Suppliers">
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UnitMeasures">
+      <EntityTypeMapping TypeName="CentralDbModel.UnitMeasures">
+        <MappingFragment StoreEntitySet="UnitMeasures">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="UnitMeasureCode" ColumnName="UnitMeasureCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cashes">
+      <EntityTypeMapping TypeName="CentralDbModel.Cashes">
+        <MappingFragment StoreEntitySet="Cashes">
+          <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+          <ScalarProperty Name="CashAmmount" ColumnName="CashAmmount" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShoppingCartItems">
+      <EntityTypeMapping TypeName="CentralDbModel.ShoppingCartItems">
+        <MappingFragment StoreEntitySet="ShoppingCartItems">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="CartId" ColumnName="CartId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

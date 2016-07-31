@@ -1,45 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="CentralDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="MeasUnits">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\GRIGOR\SOURCE\WORKSPACES\SHUKAAM\CENTRAL-API\CENTRALAPI\API\APP_DATA\CENTRALDB_DEV.MDF.dbo.Cashes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Cashes">
     <Key>
       <PropertyRef Name="Id" />
+      <PropertyRef Name="CashAmmount" />
+      <PropertyRef Name="CurrencyCode" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="MeasUnit_Guid" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="ShortName" Type="nvarchar" MaxLength="10" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="CashAmmount" Type="money" Nullable="false" />
+    <Property Name="CurrencyCode" Type="nvarchar" MaxLength="10" Nullable="false" />
   </EntityType>
-  <EntityType Name="OrderItems">
+  <EntityType Name="Categories">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Product_Id" Type="int" Nullable="false" />
-    <Property Name="Order_Id" Type="int" Nullable="false" />
-    <Property Name="Count" Type="float" Nullable="false" />
-    <Property Name="Price" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="ParentId" Type="int" />
   </EntityType>
-  <EntityType Name="Orders">
+  <EntityType Name="Currencies">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="CurrencyCode" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="User_Id" Type="int" Nullable="false" />
-    <Property Name="CreationDate" Type="datetime" Nullable="false" />
-    <Property Name="DestinationAddress" Type="nchar" MaxLength="500" Nullable="false" />
-    <Property Name="AdditionalPrice" Type="int" />
-    <Property Name="PreferableDeliveryDate" Type="datetime" />
-    <Property Name="State_Id" Type="int" />
-    <Property Name="FullPrice" Type="int" Nullable="false" />
-    <Property Name="AdditionalInformation" Type="nvarchar(max)" />
-  </EntityType>
-  <EntityType Name="OrderStates">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="State_Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CurrencyCode" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Customers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="100" Nullable="false" />
   </EntityType>
   <EntityType Name="Products">
     <Key>
@@ -47,137 +45,298 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Description" Type="nvarchar" MaxLength="500" />
-    <Property Name="Type_Id" Type="int" Nullable="false" />
-    <Property Name="CostPrice" Type="int" />
-    <Property Name="Price" Type="int" />
-    <Property Name="MeasUnit_Id" Type="int" Nullable="false" />
-    <Property Name="TotalCount" Type="int" />
-    <Property Name="AvailableCount" Type="int" />
-    <Property Name="IsAvailable" Type="bit" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="CategoryId" Type="int" Nullable="false" />
+    <Property Name="ImageUrl" Type="nvarchar(max)" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="DateModified" Type="datetime" Nullable="false" />
+    <Property Name="UnitMeasureCode" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="Weight" Type="decimal" Precision="18" Scale="2" />
   </EntityType>
-  <EntityType Name="ProductTypes">
+  <EntityType Name="PurchaseOrderItems">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="Quantity" Type="float" Nullable="false" />
+    <Property Name="UnitPrice" Type="money" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="DateModified" Type="datetime" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="PurchaseOrderId" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="Users">
+  <EntityType Name="PurchaseOrders">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="DisplayName" Type="nvarchar" MaxLength="100" />
-    <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
-    <Property Name="LastName" Type="nvarchar" MaxLength="100" />
-    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="TotalPrice" Type="money" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="DateModified" Type="datetime" Nullable="false" />
+    <Property Name="SupplierId" Type="int" Nullable="false" />
+    <Property Name="AdditionalInformation" Type="nvarchar(max)" />
   </EntityType>
-  <Association Name="FK__OrderItem__Order__25869641">
-    <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
-    <End Role="OrderItems" Type="Self.OrderItems" Multiplicity="*" />
+  <EntityType Name="SaleOrderItems">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Quantity" Type="float" Nullable="false" />
+    <Property Name="UnitPrice" Type="money" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="DateModified" Type="datetime" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="SaleOrderId" Type="int" Nullable="false" />
+    <Property Name="AdditionalInformation" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="SaleOrders">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TotalPrice" Type="money" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="DateModified" Type="datetime" Nullable="false" />
+    <Property Name="CustomerId" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\GRIGOR\SOURCE\WORKSPACES\SHUKAAM\CENTRAL-API\CENTRALAPI\API\APP_DATA\CENTRALDB_DEV.MDF.dbo.ShoppingCartItems' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ShoppingCartItems">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="CartId" />
+      <PropertyRef Name="Count" />
+      <PropertyRef Name="DateCreated" />
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CartId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Count" Type="int" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Suppliers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="Email" Type="nvarchar(max)" />
+    <Property Name="Phone" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="UnitMeasures">
+    <Key>
+      <PropertyRef Name="UnitMeasureCode" />
+    </Key>
+    <Property Name="UnitMeasureCode" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Cashes_ToCurrencies">
+    <End Role="Currencies" Type="Self.Currencies" Multiplicity="1" />
+    <End Role="Cashes" Type="Self.Cashes" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Orders">
-        <PropertyRef Name="Id" />
+      <Principal Role="Currencies">
+        <PropertyRef Name="CurrencyCode" />
       </Principal>
-      <Dependent Role="OrderItems">
-        <PropertyRef Name="Order_Id" />
+      <Dependent Role="Cashes">
+        <PropertyRef Name="CurrencyCode" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__OrderItem__Produ__2C3393D0">
+  <Association Name="FK_Categories_ToCategories">
+    <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+    <End Role="Categories1" Type="Self.Categories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Categories1">
+        <PropertyRef Name="ParentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Products_ToCategories">
+    <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+    <End Role="Products" Type="Self.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Products_ToUnitMeasures">
+    <End Role="UnitMeasures" Type="Self.UnitMeasures" Multiplicity="1" />
+    <End Role="Products" Type="Self.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UnitMeasures">
+        <PropertyRef Name="UnitMeasureCode" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="UnitMeasureCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PurchaseOrderItems_ToProducts">
     <End Role="Products" Type="Self.Products" Multiplicity="1" />
-    <End Role="OrderItems" Type="Self.OrderItems" Multiplicity="*" />
+    <End Role="PurchaseOrderItems" Type="Self.PurchaseOrderItems" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Products">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="OrderItems">
-        <PropertyRef Name="Product_Id" />
+      <Dependent Role="PurchaseOrderItems">
+        <PropertyRef Name="ProductId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Orders__State_Id__267ABA7A">
-    <End Role="OrderStates" Type="Self.OrderStates" Multiplicity="0..1" />
-    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+  <Association Name="FK_PurchaseOrderItems_ToPurchaseOrders">
+    <End Role="PurchaseOrders" Type="Self.PurchaseOrders" Multiplicity="1" />
+    <End Role="PurchaseOrderItems" Type="Self.PurchaseOrderItems" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="OrderStates">
+      <Principal Role="PurchaseOrders">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Orders">
-        <PropertyRef Name="State_Id" />
+      <Dependent Role="PurchaseOrderItems">
+        <PropertyRef Name="PurchaseOrderId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Orders__User_Id__2F10007B">
-    <End Role="Users" Type="Self.Users" Multiplicity="1" />
-    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+  <Association Name="FK_PurchaseOrders_ToSuppliers">
+    <End Role="Suppliers" Type="Self.Suppliers" Multiplicity="1" />
+    <End Role="PurchaseOrders" Type="Self.PurchaseOrders" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Users">
+      <Principal Role="Suppliers">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Orders">
-        <PropertyRef Name="User_Id" />
+      <Dependent Role="PurchaseOrders">
+        <PropertyRef Name="SupplierId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Products__MeasUn__2A4B4B5E">
-    <End Role="MeasUnits" Type="Self.MeasUnits" Multiplicity="1" />
-    <End Role="Products" Type="Self.Products" Multiplicity="*" />
+  <Association Name="FK_SaleOrderItems_ToProducts">
+    <End Role="Products" Type="Self.Products" Multiplicity="1" />
+    <End Role="SaleOrderItems" Type="Self.SaleOrderItems" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="MeasUnits">
+      <Principal Role="Products">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Products">
-        <PropertyRef Name="MeasUnit_Id" />
+      <Dependent Role="SaleOrderItems">
+        <PropertyRef Name="ProductId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Products__Type_I__2B3F6F97">
-    <End Role="ProductTypes" Type="Self.ProductTypes" Multiplicity="1" />
-    <End Role="Products" Type="Self.Products" Multiplicity="*" />
+  <Association Name="FK_SaleOrderItems_ToSaleOrders">
+    <End Role="SaleOrders" Type="Self.SaleOrders" Multiplicity="1" />
+    <End Role="SaleOrderItems" Type="Self.SaleOrderItems" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="ProductTypes">
+      <Principal Role="SaleOrders">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Products">
-        <PropertyRef Name="Type_Id" />
+      <Dependent Role="SaleOrderItems">
+        <PropertyRef Name="SaleOrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SaleOrders_ToCustomers">
+    <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+    <End Role="SaleOrders" Type="Self.SaleOrders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SaleOrders">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ShoppingCartItems_ToProducts">
+    <End Role="Products" Type="Self.Products" Multiplicity="1" />
+    <End Role="ShoppingCartItems" Type="Self.ShoppingCartItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShoppingCartItems">
+        <PropertyRef Name="ProductId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="CentralDbModelStoreContainer">
-    <EntitySet Name="MeasUnits" EntityType="Self.MeasUnits" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="OrderItems" EntityType="Self.OrderItems" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="OrderStates" EntityType="Self.OrderStates" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Currencies" EntityType="Self.Currencies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="ProductTypes" EntityType="Self.ProductTypes" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__OrderItem__Order__25869641" Association="Self.FK__OrderItem__Order__25869641">
-      <End Role="Orders" EntitySet="Orders" />
-      <End Role="OrderItems" EntitySet="OrderItems" />
+    <EntitySet Name="PurchaseOrderItems" EntityType="Self.PurchaseOrderItems" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PurchaseOrders" EntityType="Self.PurchaseOrders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SaleOrderItems" EntityType="Self.SaleOrderItems" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SaleOrders" EntityType="Self.SaleOrders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Suppliers" EntityType="Self.Suppliers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UnitMeasures" EntityType="Self.UnitMeasures" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cashes" EntityType="Self.Cashes" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Cashes].[Id] AS [Id], 
+    [Cashes].[CashAmmount] AS [CashAmmount], 
+    [Cashes].[CurrencyCode] AS [CurrencyCode]
+    FROM [dbo].[Cashes] AS [Cashes]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ShoppingCartItems" EntityType="Self.ShoppingCartItems" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ShoppingCartItems].[Id] AS [Id], 
+    [ShoppingCartItems].[CartId] AS [CartId], 
+    [ShoppingCartItems].[Count] AS [Count], 
+    [ShoppingCartItems].[DateCreated] AS [DateCreated], 
+    [ShoppingCartItems].[ProductId] AS [ProductId]
+    FROM [dbo].[ShoppingCartItems] AS [ShoppingCartItems]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Cashes_ToCurrencies" Association="Self.FK_Cashes_ToCurrencies">
+      <End Role="Currencies" EntitySet="Currencies" />
+      <End Role="Cashes" EntitySet="Cashes" />
     </AssociationSet>
-    <AssociationSet Name="FK__OrderItem__Produ__2C3393D0" Association="Self.FK__OrderItem__Produ__2C3393D0">
+    <AssociationSet Name="FK_Categories_ToCategories" Association="Self.FK_Categories_ToCategories">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Categories1" EntitySet="Categories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Products_ToCategories" Association="Self.FK_Products_ToCategories">
+      <End Role="Categories" EntitySet="Categories" />
       <End Role="Products" EntitySet="Products" />
-      <End Role="OrderItems" EntitySet="OrderItems" />
     </AssociationSet>
-    <AssociationSet Name="FK__Orders__State_Id__267ABA7A" Association="Self.FK__Orders__State_Id__267ABA7A">
-      <End Role="OrderStates" EntitySet="OrderStates" />
-      <End Role="Orders" EntitySet="Orders" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Orders__User_Id__2F10007B" Association="Self.FK__Orders__User_Id__2F10007B">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="Orders" EntitySet="Orders" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Products__MeasUn__2A4B4B5E" Association="Self.FK__Products__MeasUn__2A4B4B5E">
-      <End Role="MeasUnits" EntitySet="MeasUnits" />
+    <AssociationSet Name="FK_Products_ToUnitMeasures" Association="Self.FK_Products_ToUnitMeasures">
+      <End Role="UnitMeasures" EntitySet="UnitMeasures" />
       <End Role="Products" EntitySet="Products" />
     </AssociationSet>
-    <AssociationSet Name="FK__Products__Type_I__2B3F6F97" Association="Self.FK__Products__Type_I__2B3F6F97">
-      <End Role="ProductTypes" EntitySet="ProductTypes" />
+    <AssociationSet Name="FK_PurchaseOrderItems_ToProducts" Association="Self.FK_PurchaseOrderItems_ToProducts">
       <End Role="Products" EntitySet="Products" />
+      <End Role="PurchaseOrderItems" EntitySet="PurchaseOrderItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PurchaseOrderItems_ToPurchaseOrders" Association="Self.FK_PurchaseOrderItems_ToPurchaseOrders">
+      <End Role="PurchaseOrders" EntitySet="PurchaseOrders" />
+      <End Role="PurchaseOrderItems" EntitySet="PurchaseOrderItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PurchaseOrders_ToSuppliers" Association="Self.FK_PurchaseOrders_ToSuppliers">
+      <End Role="Suppliers" EntitySet="Suppliers" />
+      <End Role="PurchaseOrders" EntitySet="PurchaseOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SaleOrderItems_ToProducts" Association="Self.FK_SaleOrderItems_ToProducts">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="SaleOrderItems" EntitySet="SaleOrderItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SaleOrderItems_ToSaleOrders" Association="Self.FK_SaleOrderItems_ToSaleOrders">
+      <End Role="SaleOrders" EntitySet="SaleOrders" />
+      <End Role="SaleOrderItems" EntitySet="SaleOrderItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SaleOrders_ToCustomers" Association="Self.FK_SaleOrders_ToCustomers">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="SaleOrders" EntitySet="SaleOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ShoppingCartItems_ToProducts" Association="Self.FK_ShoppingCartItems_ToProducts">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="ShoppingCartItems" EntitySet="ShoppingCartItems" />
     </AssociationSet>
   </EntityContainer>
 </Schema>
