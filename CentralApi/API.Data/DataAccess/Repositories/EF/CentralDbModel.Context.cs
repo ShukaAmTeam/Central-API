@@ -37,5 +37,6 @@ namespace API.Data.DataAccess.Repositories.EF
         public virtual DbSet<UnitMeasures> UnitMeasures { get; set; }
         public virtual DbSet<Cashes> Cashes { get; set; }
         public virtual DbSet<ShoppingCartItems> ShoppingCartItems { get; set; }
+        public virtual DbSet<Warehouse> Warehouse { get; set; }
     }
 }

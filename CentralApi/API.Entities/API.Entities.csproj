@@ -40,9 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Filter\EntityFilter.cs" />
+    <Compile Include="Filter\Filters\ProductFilter.cs" />
+    <Compile Include="Filter\Filters\WarehouseFilter.cs" />
+    <Compile Include="Filter\OptionalFilter.cs" />
+    <Compile Include="Filter\IEntityFilter.cs" />
     <Compile Include="Filter\Options.cs" />
     <Compile Include="ProductEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WarehouseEntity.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

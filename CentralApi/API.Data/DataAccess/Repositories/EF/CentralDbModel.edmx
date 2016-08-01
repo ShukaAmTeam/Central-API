@@ -140,6 +140,24 @@ warning 6002: The table/view 'C:\USERS\GRIGOR\SOURCE\WORKSPACES\SHUKAAM\CENTRAL-
           <Property Name="UnitMeasureCode" Type="nvarchar" MaxLength="3" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\GRIGOR\SOURCE\WORKSPACES\SHUKAAM\CENTRAL-API\CENTRALAPI\API\APP_DATA\CENTRALDB_DEV.MDF.dbo.Warehouse' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Warehouse">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="DateCreated" />
+            <PropertyRef Name="DateModified" />
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Quantity" Type="float" />
+          <Property Name="QuantityAvalable" Type="float" />
+          <Property Name="IsAvalable" Type="bit" />
+          <Property Name="AdditionalInformation" Type="nvarchar(max)" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+        </EntityType>
         <Association Name="FK_Cashes_ToCurrencies">
           <End Role="Currencies" Type="Self.Currencies" Multiplicity="1" />
           <End Role="Cashes" Type="Self.Cashes" Multiplicity="*" />
@@ -272,6 +290,18 @@ warning 6002: The table/view 'C:\USERS\GRIGOR\SOURCE\WORKSPACES\SHUKAAM\CENTRAL-
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Warehouse_ToProducts">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Warehouse">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="CentralDbModelStoreContainer">
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Currencies" EntityType="Self.Currencies" Schema="dbo" store:Type="Tables" />
@@ -298,6 +328,18 @@ warning 6002: The table/view 'C:\USERS\GRIGOR\SOURCE\WORKSPACES\SHUKAAM\CENTRAL-
     [ShoppingCartItems].[DateCreated] AS [DateCreated], 
     [ShoppingCartItems].[ProductId] AS [ProductId]
     FROM [dbo].[ShoppingCartItems] AS [ShoppingCartItems]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Warehouse" EntityType="Self.Warehouse" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Warehouse].[Id] AS [Id], 
+    [Warehouse].[Quantity] AS [Quantity], 
+    [Warehouse].[QuantityAvalable] AS [QuantityAvalable], 
+    [Warehouse].[IsAvalable] AS [IsAvalable], 
+    [Warehouse].[AdditionalInformation] AS [AdditionalInformation], 
+    [Warehouse].[DateCreated] AS [DateCreated], 
+    [Warehouse].[DateModified] AS [DateModified], 
+    [Warehouse].[ProductId] AS [ProductId]
+    FROM [dbo].[Warehouse] AS [Warehouse]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_Cashes_ToCurrencies" Association="Self.FK_Cashes_ToCurrencies">
             <End Role="Currencies" EntitySet="Currencies" />
@@ -342,6 +384,10 @@ warning 6002: The table/view 'C:\USERS\GRIGOR\SOURCE\WORKSPACES\SHUKAAM\CENTRAL-
           <AssociationSet Name="FK_ShoppingCartItems_ToProducts" Association="Self.FK_ShoppingCartItems_ToProducts">
             <End Role="Products" EntitySet="Products" />
             <End Role="ShoppingCartItems" EntitySet="ShoppingCartItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Warehouse_ToProducts" Association="Self.FK_Warehouse_ToProducts">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Warehouse" EntitySet="Warehouse" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -405,6 +451,11 @@ warning 6002: The table/view 'C:\USERS\GRIGOR\SOURCE\WORKSPACES\SHUKAAM\CENTRAL-
             <End Role="SaleOrders" EntitySet="SaleOrders" />
             <End Role="SaleOrderItems" EntitySet="SaleOrderItems" />
           </AssociationSet>
+          <EntitySet Name="Warehouse" EntityType="CentralDbModel.Warehouse" />
+          <AssociationSet Name="FK_Warehouse_ToProducts" Association="CentralDbModel.FK_Warehouse_ToProducts">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Warehouse" EntitySet="Warehouse" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Categories">
           <Key>
@@ -456,6 +507,7 @@ warning 6002: The table/view 'C:\USERS\GRIGOR\SOURCE\WORKSPACES\SHUKAAM\CENTRAL-
           <NavigationProperty Name="PurchaseOrderItems" Relationship="CentralDbModel.FK_PurchaseOrderItems_ToProducts" FromRole="Products" ToRole="PurchaseOrderItems" />
           <NavigationProperty Name="SaleOrderItems" Relationship="CentralDbModel.FK_SaleOrderItems_ToProducts" FromRole="Products" ToRole="SaleOrderItems" />
           <NavigationProperty Name="ShoppingCartItems" Relationship="CentralDbModel.FK_ShoppingCartItems_ToProducts" FromRole="Products" ToRole="ShoppingCartItems" />
+          <NavigationProperty Name="Warehouse" Relationship="CentralDbModel.FK_Warehouse_ToProducts" FromRole="Products" ToRole="Warehouse" />
         </EntityType>
         <EntityType Name="PurchaseOrderItems">
           <Key>
@@ -691,6 +743,35 @@ warning 6002: The table/view 'C:\USERS\GRIGOR\SOURCE\WORKSPACES\SHUKAAM\CENTRAL-
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Warehouse">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="DateCreated" />
+            <PropertyRef Name="DateModified" />
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Quantity" Type="Double" />
+          <Property Name="QuantityAvalable" Type="Double" />
+          <Property Name="IsAvalable" Type="Boolean" />
+          <Property Name="AdditionalInformation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateModified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Products" Relationship="CentralDbModel.FK_Warehouse_ToProducts" FromRole="Warehouse" ToRole="Products" />
+        </EntityType>
+        <Association Name="FK_Warehouse_ToProducts">
+          <End Type="CentralDbModel.Products" Role="Products" Multiplicity="1" />
+          <End Type="CentralDbModel.Warehouse" Role="Warehouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Warehouse">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -830,6 +911,20 @@ warning 6002: The table/view 'C:\USERS\GRIGOR\SOURCE\WORKSPACES\SHUKAAM\CENTRAL-
                 <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
                 <ScalarProperty Name="Count" ColumnName="Count" />
                 <ScalarProperty Name="CartId" ColumnName="CartId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Warehouse">
+            <EntityTypeMapping TypeName="CentralDbModel.Warehouse">
+              <MappingFragment StoreEntitySet="Warehouse">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="AdditionalInformation" ColumnName="AdditionalInformation" />
+                <ScalarProperty Name="IsAvalable" ColumnName="IsAvalable" />
+                <ScalarProperty Name="QuantityAvalable" ColumnName="QuantityAvalable" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

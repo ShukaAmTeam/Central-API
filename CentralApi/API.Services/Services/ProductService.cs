@@ -20,6 +20,7 @@ namespace API.Services.Services
         {
             _centralDbUoW = new CentralDbUoW<CentralDb>();
             _productRepository = _centralDbUoW.GetRepository<Products>();
+            var r = _centralDbUoW.GetRepository<Warehouse>();
         }
 
         public async Task<List<ProductEntity>> GetProducts(Options listOptions)

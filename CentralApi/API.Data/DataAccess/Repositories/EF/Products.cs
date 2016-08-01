@@ -20,6 +20,7 @@ namespace API.Data.DataAccess.Repositories.EF
             this.PurchaseOrderItems = new HashSet<PurchaseOrderItems>();
             this.SaleOrderItems = new HashSet<SaleOrderItems>();
             this.ShoppingCartItems = new HashSet<ShoppingCartItems>();
+            this.Warehouse = new HashSet<Warehouse>();
         }
     
         public int Id { get; set; }
@@ -40,5 +41,7 @@ namespace API.Data.DataAccess.Repositories.EF
         public virtual ICollection<SaleOrderItems> SaleOrderItems { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ShoppingCartItems> ShoppingCartItems { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Warehouse> Warehouse { get; set; }
     }
 }

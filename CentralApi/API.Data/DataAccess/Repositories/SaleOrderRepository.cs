@@ -11,22 +11,7 @@ namespace API.Data.DataAccess.Repositories
         public SaleOrderRepository(CentralDbEntities context)
             : base(context)
         {
-            context.UnitMeasures.AddRange(new UnitMeasures[]
-              {
-                    new UnitMeasures {UnitMeasureCode = "IN", Name = "Inch"},
-                    new UnitMeasures {UnitMeasureCode = "KG", Name = "Kilogram"},
-                    new UnitMeasures {UnitMeasureCode = "KGV", Name = "Kilogram/cubic meter"},
-                    new UnitMeasures {UnitMeasureCode = "KM", Name = "Kilometer"},
-                    new UnitMeasures {UnitMeasureCode = "KT", Name = "Kiloton"},
-                    new UnitMeasures {UnitMeasureCode = "L", Name = "Liter"},
-                    new UnitMeasures {UnitMeasureCode = "M", Name = "Meter"},
-                    new UnitMeasures {UnitMeasureCode = "M2", Name = "Square meter"},
-                    new UnitMeasures {UnitMeasureCode = "M3", Name = "Cubic meter"},
-                    new UnitMeasures {UnitMeasureCode = "MG", Name = "Milligram"},
-                    new UnitMeasures {UnitMeasureCode = "ML", Name = "Milliliter"},
-                    new UnitMeasures {UnitMeasureCode = "MM", Name = "Millimeter"},
-                    new UnitMeasures {UnitMeasureCode = "PC", Name = "Piece"}
-              });
+           
         }
 
         public CentralDbEntities CentralDbContext => DbContext as CentralDbEntities;

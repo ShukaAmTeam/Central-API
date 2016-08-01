@@ -28,6 +28,8 @@
         <AssociationConnector Association="CentralDbModel.FK_PurchaseOrderItems_ToPurchaseOrders" />
         <AssociationConnector Association="CentralDbModel.FK_PurchaseOrders_ToSuppliers" />
         <AssociationConnector Association="CentralDbModel.FK_SaleOrderItems_ToSaleOrders" />
+        <EntityTypeShape EntityType="CentralDbModel.Warehouse" Width="1.5" PointX="5" PointY="9.5" />
+        <AssociationConnector Association="CentralDbModel.FK_Warehouse_ToProducts" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

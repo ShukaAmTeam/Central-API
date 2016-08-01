@@ -7,10 +7,6 @@
         public string Description { get; set; }
         public int? CostPrice { get; set; }
         public int? Price { get; set; }
-        public int? TotalCount { get; set; }
-        public int? AvailableCount { get; set; }
-        public bool? IsAvailable { get; set; }
-
         public MeasUnitEntity MeasUnits { get; set; }
         public ProductTypeEntity ProductTypes { get; set; }
     }

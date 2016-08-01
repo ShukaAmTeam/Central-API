@@ -76,6 +76,7 @@
       <DependentUpon>CentralDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataAccess\Repositories\EF\Central\CentralDb_SaleOrders.cs" />
+    <Compile Include="DataAccess\Repositories\EF\Central\CentralDb_Warehouse.cs" />
     <Compile Include="DataAccess\Repositories\EF\Central\ICentralEntity.cs" />
     <Compile Include="DataAccess\Repositories\EF\Central\CentralDb_Product.cs" />
     <Compile Include="DataAccess\Repositories\EF\CentralDbModel.Context.cs">
@@ -122,6 +123,9 @@
       <DependentUpon>CentralDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataAccess\Repositories\EF\UnitMeasures.cs">
+      <DependentUpon>CentralDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\Repositories\EF\Warehouse.cs">
       <DependentUpon>CentralDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataAccess\Repositories\SaleOrderRepository.cs" />
