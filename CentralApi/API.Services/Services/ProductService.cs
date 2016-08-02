@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using API.Data.DataAccess;
 using API.Data.DataAccess.Repositories.EF;
@@ -28,9 +27,9 @@ namespace API.Services.Services
             var products = _productRepository.GetAll();
 
             var productAssembler = new ProductAssembler();
-            var agentSlotEntities = productAssembler.DomainEntitiesToDtos(products);
+            var productEntities = productAssembler.DomainEntitiesToDtos(products);
 
-            return agentSlotEntities;
+            return productEntities;
         }
         public List<ProductEntity> GetProducts()
         {

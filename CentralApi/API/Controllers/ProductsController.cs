@@ -25,17 +25,9 @@ namespace API.Controllers
         
         [HttpGet]
         [Route("")]
-        public async Task<IHttpActionResult> GetProducts(int? limit = null, int? offset = null)
+        public async Task<IHttpActionResult> GetProducts(Options options)
         {
-            try
-            {
-                var productsEntity2 = _productsService.GetProducts();
-            }
-            catch (Exception ex)
-            {
-                
-            }
-            var productsEntity = await _productsService.GetProducts(new Options(limit, offset)).ConfigureAwait(false);
+            var productsEntity = await _productsService.GetProducts(options);
 
             //var productsModel = new ProductsModel
             //{
