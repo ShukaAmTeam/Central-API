@@ -3,6 +3,7 @@ using System.Linq;
 using System.Data.Entity;
 using System.Linq.Expressions;
 using System.Collections.Generic;
+using API.Data.Filtering;
 
 namespace API.Data.DataAccess.Repositories
 {
@@ -43,13 +44,13 @@ namespace API.Data.DataAccess.Repositories
         }
 
         /// <exception cref="ArgumentNullException"><paramref name="source" /> is null.</exception>
-        public IEnumerable<TEntity> GetAll()
+        public IQueryable<TEntity> GetAll()
         {
-            return _dbContext.Set<TEntity>().ToList(); //ToDo change to .AsEnumerable()
+            return _dbContext.Set<TEntity>();//.ToList(); //ToDo change to .AsEnumerable()
         }
 
         /// <exception cref="ArgumentNullException"><paramref name="source" /> or <paramref name="predicate" /> is null.</exception>
-        public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
+        public IQueryable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
         {
             return _dbContext.Set<TEntity>().Where(predicate);
         }

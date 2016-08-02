@@ -1,10 +1,10 @@
-﻿using API.Entities.Filter;
-using API.Services;
+﻿using API.Services;
 using API.Services.Services;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
+using API.Entities.Filtering;
 
 namespace API.Controllers
 {

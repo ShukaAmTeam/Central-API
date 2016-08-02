@@ -1,7 +1,7 @@
 ﻿using API.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using API.Entities.Filter;
+using API.Entities.Filtering;
 
 namespace API.Services
 {

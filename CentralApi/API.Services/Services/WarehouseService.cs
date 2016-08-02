@@ -6,7 +6,7 @@ using API.Data.DataAccess;
 using API.Data.DataAccess.Repositories.EF;
 using API.Data.UnitOfWork;
 using API.Entities;
-using API.Entities.Filter;
+using API.Entities.Filtering;
 using API.Services.Assembler;
 
 namespace API.Services.Services
