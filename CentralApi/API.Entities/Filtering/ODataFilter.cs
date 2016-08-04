@@ -14,7 +14,7 @@ namespace API.Entities.Filtering
         }
         public override IQueryable<TEntity> Filer(IQueryable<TEntity> instance)
         {
-            return _options.ApplyTo(instance as IQueryable) as IQueryable<TEntity>;
+            return _options.ApplyTo(instance) as IQueryable<TEntity>;
         }
 
         public override bool Validate(TEntity instance)

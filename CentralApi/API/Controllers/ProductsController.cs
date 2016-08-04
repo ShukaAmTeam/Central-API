@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.OData.Query;
+using API.Entities;
 using API.Entities.Filtering;
 
 namespace API.Controllers
@@ -13,6 +15,7 @@ namespace API.Controllers
     public class ProductsController : ApiController
     {
         private readonly IProductService _productsService;
+        private readonly IWarehouseService _warehouseService;
 
         public ProductsController()
         {
@@ -28,7 +31,14 @@ namespace API.Controllers
         public async Task<IHttpActionResult> GetProducts(Options options)
         {
             var productsEntity = await _productsService.GetProducts(options);
+       
+            var odataOptions = new ODataQueryOptions(null, null);
+            var odFilter = new ODataFilter<WarehouseEntity>(null);
+            var simpleFilter = new OptionalFilter<WarehouseEntity>();
 
+
+            var objects = _warehouseService.GetWarehouseEntities(odFilter);
+            var objects1 = _warehouseService.GetWarehouseEntities(simpleFilter);
             //var productsModel = new ProductsModel
             //{
             //    Products = new List<Products>(),
